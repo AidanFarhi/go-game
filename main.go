@@ -18,7 +18,7 @@ func main() {
 	m.HandleFunc("GET /gamegrid", handler.GetGameGridHandler(gs))
 
 	s := http.Server{
-		Addr: ":7889",
+		Addr: ":1337",
 		Handler: m,
 	}
 

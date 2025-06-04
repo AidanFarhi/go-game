@@ -5,6 +5,7 @@
     width: 400px;
     height: 400px;
 }
+
 .cell {
     position: relative;
     width: 30px;
@@ -20,6 +21,7 @@
     position: absolute;
     background: black;
 }
+
 .cell::before {
     width: 1px;
     height: 100%;
@@ -27,10 +29,35 @@
     top: 0;
     transform: translateX(-50%);
 }
+
 .cell::after {
     height: 1px;
     width: 100%;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+}
+
+/* Remove left vertical bar for leftmost column (every 20th + 1) */
+.cell:nth-child(20n + 1)::after {
+    left: 50%;
+    width: 50%;
+    transform: translateY(-50%);
+}
+
+/* Remove right vertical bar for rightmost column (every 20th) */
+.cell:nth-child(20n)::after {
+    width: 50%;
+}
+
+/* Remove top horizontal bar for top row */
+.cell:nth-child(-n + 20)::before {
+    top: 50%;
+    height: 50%;
+    transform: translateX(-50%);
+}
+
+/* Remove bottom horizontal bar for bottom row */
+.cell:nth-last-child(-n + 20)::before {
+    height: 50%;
 }
